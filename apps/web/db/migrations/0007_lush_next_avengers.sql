@@ -1,0 +1,1 @@
+ALTER TABLE "tabs" ADD COLUMN "is_active" boolean DEFAULT false;

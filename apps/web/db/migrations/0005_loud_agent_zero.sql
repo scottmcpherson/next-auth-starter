@@ -1,0 +1,1 @@
+ALTER TABLE "connections" ADD COLUMN "sequence" integer DEFAULT 0;

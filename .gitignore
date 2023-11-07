@@ -1,0 +1,13 @@
+node_modules
+dist
+build
+.env
+.DS_Store
+.vscode
+.vercel
+
+# Ignore all .env files
+.env*
+
+# Except for .env.example
+!.env.example
