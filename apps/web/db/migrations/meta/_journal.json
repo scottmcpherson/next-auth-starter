@@ -5,64 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1693848561545,
-      "tag": "0000_legal_bushwacker",
-      "breakpoints": false
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1693918891111,
-      "tag": "0001_unknown_maximus",
-      "breakpoints": false
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1693919360572,
-      "tag": "0002_motionless_chimera",
-      "breakpoints": false
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1693939870418,
-      "tag": "0003_omniscient_maverick",
-      "breakpoints": false
-    },
-    {
-      "idx": 4,
-      "version": "5",
-      "when": 1693941989423,
-      "tag": "0004_dazzling_deathbird",
-      "breakpoints": false
-    },
-    {
-      "idx": 5,
-      "version": "5",
-      "when": 1693946586416,
-      "tag": "0005_loud_agent_zero",
-      "breakpoints": false
-    },
-    {
-      "idx": 6,
-      "version": "5",
-      "when": 1694214252285,
-      "tag": "0006_hard_human_robot",
-      "breakpoints": false
-    },
-    {
-      "idx": 7,
-      "version": "5",
-      "when": 1694307675521,
-      "tag": "0007_lush_next_avengers",
-      "breakpoints": false
-    },
-    {
-      "idx": 8,
-      "version": "5",
-      "when": 1694391227295,
-      "tag": "0008_true_bullseye",
+      "when": 1699407588634,
+      "tag": "0000_fancy_randall_flagg",
       "breakpoints": false
     }
   ]

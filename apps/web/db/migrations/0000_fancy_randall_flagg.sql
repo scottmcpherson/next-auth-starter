@@ -1,26 +1,26 @@
 DO $$ BEGIN
- CREATE TYPE "connection_type" AS ENUM('postgresql', 'mysql');
+ CREATE TYPE "organization_type" AS ENUM('personal', 'organization');
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
-DO $$ BEGIN
- CREATE TYPE "tab_type" AS ENUM('sql', 'table', 'generatedData');
-EXCEPTION
- WHEN duplicate_object THEN null;
-END $$;
+CREATE TABLE IF NOT EXISTS "chat_messages" (
+	"tab_content_id" serial PRIMARY KEY NOT NULL,
+	"content" text,
+	"chat_topic_id" integer
+);
 
-CREATE TABLE IF NOT EXISTS "connections" (
-	"connection_id" serial PRIMARY KEY NOT NULL,
-	"connection_type" connection_type,
-	"connection_url" text,
-	"organization_id" integer,
-	"user_id" text
+CREATE TABLE IF NOT EXISTS "chat_topics" (
+	"chat_topic_id" serial PRIMARY KEY NOT NULL,
+	"title" text,
+	"user_id" text,
+	"created_at" timestamp DEFAULT now()
 );
 
 CREATE TABLE IF NOT EXISTS "organizations" (
 	"organization_id" serial PRIMARY KEY NOT NULL,
 	"name" text,
+	"organization_type" organization_type,
 	"created_at" timestamp DEFAULT now()
 );
 
@@ -80,12 +80,15 @@ CREATE TABLE IF NOT EXISTS "subscriptions" (
 	"updated_at" timestamp DEFAULT now()
 );
 
-CREATE TABLE IF NOT EXISTS "tabs" (
-	"tab_id" serial PRIMARY KEY NOT NULL,
-	"order" integer,
+CREATE TABLE IF NOT EXISTS "users" (
+	"user_id" text PRIMARY KEY NOT NULL,
+	"email" varchar(320),
+	"photo_url" text,
 	"name" text,
-	"tab_type" tab_type,
-	"connection_id" integer
+	"is_active" boolean DEFAULT true,
+	"preferences" json,
+	"stripe_customer_id" text,
+	"created_at" timestamp DEFAULT now()
 );
 
 CREATE TABLE IF NOT EXISTS "users_roles" (
@@ -105,22 +108,15 @@ CREATE TABLE IF NOT EXISTS "users_to_organizations" (
 --> statement-breakpoint
 ALTER TABLE "users_to_organizations" ADD CONSTRAINT "users_to_organizations_user_id_organization_id" PRIMARY KEY("user_id","organization_id");
 
-ALTER TABLE "users" RENAME COLUMN "display_name" TO "name";
-ALTER TABLE "users" ADD COLUMN "stripe_customer_id" text;
 CREATE UNIQUE INDEX IF NOT EXISTS "permissions_name_idx" ON "permissions" ("name");
 CREATE UNIQUE INDEX IF NOT EXISTS "prices_product_active_idx" ON "prices" ("product_id","active");
 CREATE UNIQUE INDEX IF NOT EXISTS "products_active_idx" ON "products" ("active");
 CREATE UNIQUE INDEX IF NOT EXISTS "roles_name_idx" ON "roles" ("name");
 CREATE UNIQUE INDEX IF NOT EXISTS "roles_user_id_idx" ON "subscriptions" ("user_id");
+CREATE UNIQUE INDEX IF NOT EXISTS "users_email_idx" ON "users" ("email");
 CREATE UNIQUE INDEX IF NOT EXISTS "users_stripe_customer_id_idx" ON "users" ("stripe_customer_id");
 DO $$ BEGIN
- ALTER TABLE "connections" ADD CONSTRAINT "connections_organization_id_organizations_organization_id_fk" FOREIGN KEY ("organization_id") REFERENCES "organizations"("organization_id") ON DELETE no action ON UPDATE no action;
-EXCEPTION
- WHEN duplicate_object THEN null;
-END $$;
-
-DO $$ BEGIN
- ALTER TABLE "connections" ADD CONSTRAINT "connections_user_id_users_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"("user_id") ON DELETE no action ON UPDATE no action;
+ ALTER TABLE "chat_topics" ADD CONSTRAINT "chat_topics_user_id_users_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"("user_id") ON DELETE no action ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -133,12 +129,6 @@ END $$;
 
 DO $$ BEGIN
  ALTER TABLE "roles_permissions" ADD CONSTRAINT "roles_permissions_permission_id_permissions_permission_id_fk" FOREIGN KEY ("permission_id") REFERENCES "permissions"("permission_id") ON DELETE no action ON UPDATE no action;
-EXCEPTION
- WHEN duplicate_object THEN null;
-END $$;
-
-DO $$ BEGIN
- ALTER TABLE "tabs" ADD CONSTRAINT "tabs_connection_id_connections_connection_id_fk" FOREIGN KEY ("connection_id") REFERENCES "connections"("connection_id") ON DELETE no action ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

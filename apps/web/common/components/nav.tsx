@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import UserMenu from './user-menu'
 import ThemeSwitch from './theme-switch'
+import UserMenu from './user-menu'
 
 export default function Nav() {
   return (
@@ -14,7 +14,7 @@ export default function Nav() {
                 href="/"
                 className="text-2xl font-semibold text-slate-900 dark:text-slate-100"
               >
-                App Name
+                NextAuthStarter
               </Link>
             </div>
           </div>

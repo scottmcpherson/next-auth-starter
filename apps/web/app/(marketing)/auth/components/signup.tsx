@@ -1,10 +1,10 @@
 'use client'
 
+import Input from '@/common/components/input'
 import { useAuth } from '@/common/contexts/auth-context'
-import { isFunction } from '@/common/utils/utils'
+import { isFunction } from '@/common/utils/helpers'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useForm } from 'react-hook-form'
-import Input from '../../../../common/components/input'
 import { ActiveAuthForm } from '../constants'
 import { GoogleIcon } from './provider-icons'
 

@@ -1,5 +1,5 @@
 import { firebaseAdmin } from '@/common/utils/firebase-admin'
-import { getFirstItem, isEmptyArray } from '@/common/utils/helpers'
+import { getFirstItem } from '@/common/utils/helpers'
 import { db } from '@/db'
 import { organizations, roles, users, usersRoles } from '@/db/schema'
 import { eq, sql } from 'drizzle-orm'

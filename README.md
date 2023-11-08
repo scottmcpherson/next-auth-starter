@@ -51,3 +51,15 @@ Note: FIREBASE_PUBLIC_STORAGE_BUCKET and FIREBASE_PUBLIC_PROJECT_ID are the same
 Head on over to Vercel and create a project and database. Optionally, you can create a local database and use that instead.
 
 When creating the project, you'll likely want to push your project up to GitHub first, so you can import it from Vercel.
+
+When creating the project, make sure Root Directory is set to apps/web:
+![firebase web](./docs/images/vercel-root-dir.png)
+
+And add the environment variables from you're .env.local
+
+Once your project is created, head over to the Storage tab in Vercel and create a postgres database and grab the connection strings to add to .env.local:
+
+```
+POSTGRES_URL=""
+POSTGRES_URL_NON_POOLING=""
+```
