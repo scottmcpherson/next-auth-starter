@@ -1,7 +1,7 @@
 export default function Dashboard() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-slate-50 dark:bg-slate-950">
-      Dashboard Page
+    <div className="flex flex-1">
+      <div className="flex flex-col">Dashboard Page</div>
     </div>
   )
 }

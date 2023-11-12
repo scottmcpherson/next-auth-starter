@@ -17,10 +17,10 @@ export default function Footer() {
           {/* Footer column 1 */}
           <div className="md:col-span-1">
             <h4 className="mb-4 text-3xl font-semibold text-gray-800 dark:text-gray-100">
-              TableChat
+              NextStarter
             </h4>
             <p className="text-base text-gray-500">
-              Chat with your database using simple, human language.
+              An opinionated starter template for Next.js
             </p>
           </div>
 
@@ -54,22 +54,16 @@ export default function Footer() {
               Follow Us
             </h4>
             <ul className="space-y-2">
-              <FooterLink
-                href="https://twitter.com/tablechat"
-                title="Twitter"
-              />
-              <FooterLink
-                href="https://linkedin.com/tablechat"
-                title="LinkedIn"
-              />
-              <FooterLink href="https://github.com/tablechat" title="GitHub" />
+              <FooterLink href="https://twitter.com" title="Twitter" />
+              <FooterLink href="https://linkedin.com" title="LinkedIn" />
+              <FooterLink href="https://github.com" title="GitHub" />
             </ul>
           </div>
         </div>
 
         <div className="mt-16 flex items-center justify-between pt-10">
           <p className="text-base text-gray-400 dark:text-gray-400">
-            &copy; {new Date().getFullYear()} TableChat. All rights reserved.
+            &copy; {new Date().getFullYear()} NextStarter. All rights reserved.
           </p>
           <div className="flex items-center space-x-4">
             <a

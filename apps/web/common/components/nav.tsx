@@ -8,20 +8,20 @@ export default function Nav() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 justify-between">
           <div className="flex">
-            <div className="-ml-2 mr-2 flex items-center">
+            <div className="flex items-center">
               {/* Logo */}
               <Link
                 href="/"
                 className="text-2xl font-semibold text-slate-900 dark:text-slate-100"
               >
-                NextAuthStarter
+                NextStarter
               </Link>
             </div>
           </div>
           <div className="flex items-center">
             <div className="flex items-center">
               <UserMenu />
-              <ThemeSwitch />
+              {/* <ThemeSwitch /> */}
             </div>
           </div>
         </div>
